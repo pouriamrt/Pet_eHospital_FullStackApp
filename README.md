@@ -1,2 +1,0 @@
-# FullStack
-FullStack course uottawa

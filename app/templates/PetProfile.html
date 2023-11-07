@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!--Profile Photo-->
+    <div class="text-center my-4">
+        <h1 class="mb-4">Pet Profile</h1>
+        <img src="https://yt3.googleusercontent.com/Ako12yRikh00QZgvrOUdk3uaPKrYYNTUfin60K20JC6dHhR7bvqLosRKkQ8rYr6ImivnspqbkSU=s176-c-k-c0x00ffffff-no-rj"
+                alt="profile photo of user's pet" class="rounded img-fluid my-4">
+    </div>
+    <!--Info form-->
+    <section class="container my-4">
+        <form action="submit.php" method="post"> <!-- Replace "submit.php" with your form submission endpoint -->
+            <div class="mb-3 row justify-content-center">
+                <label for="name" class="col-sm-1 col-form-label">Name</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="name" name="name" style="background-color: #d8d8d9">
+                </div>
+            </div>
+            <div class="mb-3 row justify-content-center">
+                <label for="type" class="col-sm-1 col-form-label">Type</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="type" name="type" style="background-color: #d8d8d9">
+                </div>
+            </div>
+            <div class="mb-3 row justify-content-center">
+                <label for="age" class="col-sm-1 col-form-label">Age</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="age" name="age" style="background-color: #d8d8d9">
+                </div>
+            </div>
+            <div class="mb-3 row justify-content-center">
+                <label for="breed" class="col-sm-1 col-form-label">Breed</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="breed" name="breed" style="background-color: #d8d8d9">
+                </div>
+            </div>
+            <div class="mb-3 row justify-content-center">
+                <label for="weight" class="col-sm-1 col-form-label">Weight</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="weight" name="weight" style="background-color: #d8d8d9">
+                </div>
+            </div>
+            <!-- Done button -->
+            <div class="container">
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success px-5 rounded-pill" style="background-color: #30ba8e;">Done</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+{% endblock %}
