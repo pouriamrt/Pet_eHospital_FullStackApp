@@ -29,7 +29,7 @@ body {
 
 /* ******************************************************** */
 
-.card {
+.card-c {
     width: 300px;
     height: 300px;
     transform-style: preserve-3d;
@@ -38,7 +38,7 @@ body {
     background-color: inherit;
 }
 
-.card .face {
+.card-c .face {
     position: absolute;
     color: black;
     width: 100%;
@@ -56,8 +56,8 @@ body {
 border-bottom: 1px solid #999; */
 }
 
-.card .face.front-face,
-.card .face.back-face {
+.card-c .face.front-face,
+.card-c .face.back-face {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -65,28 +65,28 @@ border-bottom: 1px solid #999; */
     justify-content: center;
 }
 
-.card .face.front-face .profile {
+.card-c .face.front-face .profile {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.card .face.front-face .name {
+.card-c .face.front-face .name {
     letter-spacing: 2px;
 }
 
-.card .face.front-face .designation {
+.card-c .face.front-face .designation {
     font-size: 0.8rem;
     color: black;
     letter-spacing: 0.8px;
 }
 
-.card:hover .face.front-face {
+.card-c:hover .face.front-face {
     transform: rotateY(180deg);
 }
 
-.card .face.back-face {
+.card-c .face.back-face {
     position: absolute;
     background: rgba(255, 255, 255, 0.06);
     transform: rotateY(180deg);
@@ -95,21 +95,21 @@ border-bottom: 1px solid #999; */
     user-select: none;
 }
 
-.card .face.back-face .fa-quote-left {
+.card-c .face.back-face .fa-quote-left {
     position: absolute;
     top: 25px;
     left: 25px;
     font-size: 1.2rem;
 }
 
-.card .face.back-face .fa-quote-right {
+.card-c .face.back-face .fa-quote-right {
     position: absolute;
     bottom: 35px;
     right: 25px;
     font-size: 1.2rem;
 }
 
-.card:hover .face.back-face {
+.card-c:hover .face.back-face {
     transform: rotateY(360deg);
 }
 
