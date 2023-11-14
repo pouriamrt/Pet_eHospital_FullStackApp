@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        body{
+            background: #55ffe5;
+            font-size: 14px;
+        }
+        
+        .container{
+            width: 80%;
+            margin: 50px auto;
+        }
+
+        .contact-box{
+            background: #fff;
+            display: flex;
+        }
+
+        .contact-left{
+            flex-basis: 60%;
+            padding: 40px 60px;
+        }
+
+        .contact-right{
+            flex-basis: 40%;
+            padding: 40px;
+            background: #1c00b5;
+            color : white;
+        }
+        h1{
+            margin-bottom: 10px;
+        }
+        .container p{
+            margin-bottom: 40px;
+        }
+        
+        .input-row{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .input-row .input-group{
+            flex-basis: 45%;
+        }
+        input{
+            width: 100%;
+            border: none;
+            border-bottom : 1px solid #ccc;
+            outline : none;
+            padding-bottom: 5px;
+        }
+
+        textarea{
+            width: 100%;
+            border: 1px solid #ccc;
+            outline : none;
+            padding : 10px;
+            box-sizing: border-box;
+        }
+
+        label{
+            margin-bottom: 6px;
+            display: block;
+            color: #1c00b5;
+        }
+
+        button{
+            background: #1c00b5;
+            width: 100px;
+            border: none;
+            outline: none;
+            color: #fff;
+            height: 35px;
+            border-radius: 30px;
+            margin-top: 20px;
+            box-shadow: 0px 5px 15px 0px rgba(28,0,181,0.3);
+        }
+
+        .contact-left h3{
+            color: #1c00b5;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .contact-right h3{
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        tr td:firsth-child{
+            padding-right: 20px;
+        }
+        tr td{
+            padding-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class = "container">
+        <h1>Connet With Us</h1>
+        <p>We would love to respond to your queries and help you succeed.<br> Feel free to get in touch with us.</p>
+        <div class = "contact-box">
+            <div class = "contact-left">
+                <h3>Sent your request</h3>
+                <form>
+                    
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="John Lee">
+                        </div>
+                        <div class="input-group">
+                            <label>Phone</label>
+                            <input type="text" placeholder="+1 343 520 3231">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" 
+                            placeholder="Johnlee@gmail.com">
+                        </div>
+                        <div class="input-group">
+                            <label>Subject</label>
+                            <input type="text" placeholder="Product Demo">
+                        </div>
+                    </div>
+
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="Your Message"></textarea>
+
+                </form>
+
+            </div>
+            <div class = "contact-right">
+                <h3>Reach Us</h3>
+
+                <table>
+                    <tr>
+                        <td>Email</td>
+                        <td>contactus@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>+1 012 345 6789</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>#212, Chapel Street, 7th cross<br>
+                        Some layout, Some Road, Ottawa<br>
+                        Ontario 560001
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
