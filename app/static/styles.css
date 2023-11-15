@@ -1,0 +1,177 @@
+/* Reseting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+	min-height: 100%;
+	height: auto;
+}
+
+body {
+	background: linear-gradient(to bottom, rgba(225,240,250,1), white);
+	min-height: 100vh;
+}
+
+.b_frame {
+	-webkit-box-shadow: 0 19px 147px -41px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0 19px 147px -41px rgba(0,0,0,0.75);
+	box-shadow: 0 19px 147px -41px rgba(0,0,0,0.75);
+	border: 0;
+	width: 90%;
+	height: 700px;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 40px;
+}
+
+/* ******************************************************** */
+
+.card-c {
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    border: none;
+    background-color: inherit;
+}
+
+.card-c .face {
+    position: absolute;
+    color: black;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.06);
+    transform-style: preserve-3d;
+    transition: 0.5s;
+    backface-visibility: hidden;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    /* border-right: 1px solid #999;
+border-bottom: 1px solid #999; */
+}
+
+.card-c .face.front-face,
+.card-c .face.back-face {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-c .face.front-face .profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.card-c .face.front-face .name {
+    letter-spacing: 2px;
+}
+
+.card-c .face.front-face .designation {
+    font-size: 0.8rem;
+    color: black;
+    letter-spacing: 0.8px;
+}
+
+.card-c:hover .face.front-face {
+    transform: rotateY(180deg);
+}
+
+.card-c .face.back-face {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.06);
+    transform: rotateY(180deg);
+    padding: 20px 30px;
+    text-align: center;
+    user-select: none;
+}
+
+.card-c .face.back-face .fa-quote-left {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 1.2rem;
+}
+
+.card-c .face.back-face .fa-quote-right {
+    position: absolute;
+    bottom: 35px;
+    right: 25px;
+    font-size: 1.2rem;
+}
+
+.card-c:hover .face.back-face {
+    transform: rotateY(360deg);
+}
+
+/* ******************************************************** */
+
+.footer-clean {
+  padding:50px 0;
+  background-color:#fff;
+  color:#4b4c4d;
+}
+
+.footer-clean h3 {
+  margin-top:0;
+  margin-bottom:12px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.footer-clean ul {
+  padding:0;
+  list-style:none;
+  line-height:1.6;
+  font-size:14px;
+  margin-bottom:0;
+}
+
+.footer-clean ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-clean ul a:hover {
+  opacity:1;
+}
+
+.footer-clean .item.social {
+  text-align:right;
+}
+
+.footer-clean .item.social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin-left:10px;
+  margin-top:22px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-clean .item.social > a:hover {
+  opacity:0.9;
+}
+
+.footer-clean .copyright {
+  margin-top:14px;
+  margin-bottom:0;
+  font-size:13px;
+  opacity:0.6;
+}

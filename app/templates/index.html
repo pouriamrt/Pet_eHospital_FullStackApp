@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="pt-5 px-5">Our AI Assistant</h1>
+    <hr style="width:50%;border: 1px solid blue;">
+    <p class="pt-1 px-5 pb-2" style="font-size:20px">Here is the aI assistant that guides you to solve your problem.</p>
+    
+    <div>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_chatbot.css')}}"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <div class="container-fluid h-100">
+			<div class="row justify-content-center h-100">		
+				<div class="col-md-8 col-xl-6 chat">
+					<div class="card">
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://i.ibb.co/fSNP7Rz/icons8-chatgpt-512.png" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>ChatBot</span>
+									<p>Ask me anything!</p>
+								</div>
+							</div>
+						</div>
+						<div id="messageFormeight" class="card-body msg_card_body">
+							
+							
+						</div>
+						<div class="card-footer">
+							<form id="messageArea" class="input-group">
+                                <input type="text" id="text" name="msg" placeholder="Type your message..." autocomplete="off" class="form-control type_msg" required/>
+								<div class="input-group-append">
+									<button type="submit" id="send" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <script>
+			$(document).ready(function() {
+				$("#messageArea").on("submit", function(event) {
+					const date = new Date();
+					const hour = date.getHours();
+					const minute = date.getMinutes();
+					const str_time = hour+":"+minute;
+					var rawText = $("#text").val();
+
+					var userHtml = '<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + rawText + '<span class="msg_time_send">'+ str_time + '</span></div><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div></div>';
+					
+					$("#text").val("");
+					$("#messageFormeight").append(userHtml);
+
+					$.ajax({
+						data: {
+							msg: rawText,	
+						},
+						type: "POST",
+						url: "/get",
+					}).done(function(data) {
+						var botHtml = '<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://i.ibb.co/fSNP7Rz/icons8-chatgpt-512.png" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' + data + '<span class="msg_time">' + str_time + '</span></div></div>';
+						$("#messageFormeight").append($.parseHTML(botHtml));
+					});
+					event.preventDefault();
+				});
+			});
+		</script>
+        <!-- <iframe id="frame" class="b_frame" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/8cc37b8a-e848-4823-8175-470e730066cc"></iframe> -->
+    </div>
+    
+    <br>
+    <h1 class="pt-5 px-5">Introduction</h1>
+    <hr style="width:50%;border: 1px solid blue;">
+    <p class="pt-1 px-5 pb-2" style="font-size:20px">Experience the future of pet care with our innovative AI-assisted app. Schedule appointments, consult with AI-driven veterinary advice, access medical records, and receive smart reminders for vaccinations and check-ups—all in one convenient place.</p>
+    
+    
+    <h1 class="pt-5 mt-5 text-center"><strong>What Practices Working With Us Are Saying</strong></h1>
+    <hr>
+    
+    <div class="container pb-5 mb-5" style="height:400px">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card-c">
+                    <div class="face front-face">
+                        <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80"
+                            alt="" class="profile">
+                        <div class="pt-3 text-uppercase name">
+                            Robert Garrison
+                        </div>
+                        <div class="designation">Android Developer</div>
+                    </div>
+                    <div class="face back-face">
+                        <span class="fa fa-quote-left"></span>
+                        <div class="testimonial">
+                            Amazing app! It's a lifesaver for my furry friend. Quick consultations, easy medication tracking, and a caring team of vets. Highly recommended!
+                        </div>
+                        <span class="fa fa-quote-right"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-c">
+                    <div class="face front-face">
+                        <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                            alt="" class="profile">
+                        <div class="pt-3 text-uppercase name">
+                            Jeffery Kennan
+                        </div>
+                        <div class="designation">Full Stack Developer</div>
+                    </div>
+                    <div class="face back-face">
+                        <span class="fa fa-quote-left"></span>
+                        <div class="testimonial">
+                            The pawspital app is a game-changer. I can schedule appointments on the fly, access my pet's medical history, and even chat with a vet whenever I have concerns. So convenient!
+                        </div>
+                        <span class="fa fa-quote-right"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-c">
+                    <div class="face front-face">
+                        <img src="https://images.unsplash.com/photo-1614574762522-6ac2fbba2208?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjY2fHxtYW58ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            alt="" class="profile">
+                        <div class="pt-3 text-uppercase name">
+                            Issac Maxwell
+                        </div>
+                        <div class="designation">Finance Director</div>
+                    </div>
+                    <div class="face back-face">
+                        <span class="fa fa-quote-left"></span>
+                        <div class="testimonial">
+                            This app has brought peace of mind. Emergency support, reminders for vaccinations, and a user-friendly interface. It's like having a vet in your pocket!
+                        </div>
+                        <span class="fa fa-quote-right"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

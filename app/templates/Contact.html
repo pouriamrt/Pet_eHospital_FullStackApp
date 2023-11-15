@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <link href="/static/styles_contact.css" rel="stylesheet" />
+    <div class = "container">
+        <h1>Connet With Us</h1>
+        <p>We would love to respond to your queries and help you succeed.<br> Feel free to get in touch with us.</p>
+        <div class = "contact-box">
+            <div class = "contact-left">
+                <h3>Sent your request</h3>
+                <form action="submit.php" method="post">
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="John Lee">
+                        </div>
+                        <div class="input-group">
+                            <label>Phone</label>
+                            <input type="text" placeholder="+1 343 520 3231">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" 
+                            placeholder="Johnlee@gmail.com">
+                        </div>
+                        <div class="input-group">
+                            <label>Subject</label>
+                            <input type="text" placeholder="Product Demo">
+                        </div>
+                    </div>
+
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="Your Message"></textarea>
+                    
+                    <div class="container">
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-success px-5 rounded-pill" style="background-color: #30ba8e;">Done</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class = "contact-right">
+                <h3>Reach Us</h3>
+
+                <table>
+                    <tr>
+                        <td>Email</td>
+                        <td>contactus@example.com</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>+1 012 345 6789</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>#212, Chapel Street, 7th cross<br>
+                        Some layout, Some Road, Ottawa<br>
+                        Ontario 560001
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
