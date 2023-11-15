@@ -27,7 +27,6 @@ stages:
     displayName: Build
     pool:
       name: POURIA
-      demands: python
       vmImage: $(vmImageName)
     steps:
     - task: Docker@2
