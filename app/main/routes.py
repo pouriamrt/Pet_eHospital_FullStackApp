@@ -56,3 +56,4 @@ def about():
 @login_required
 def contact():
     return render_template('Contact.html')
+

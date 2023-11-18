@@ -8,11 +8,12 @@ from werkzeug.utils import secure_filename
 from openai import OpenAI
 
 
-connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
+#connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
+connect_str = "DefaultEndpointsProtocol=https;AccountName=ph0t0st0rage;AccountKey=iXyMmN6ceBCv0mhaI7YxzBQiV4ctgHFi0ohtOBFbTUR6h+4oPBjcceJhpG6ZrJBmG1O2l6Ib7LhS+AStsB2Sww==;EndpointSuffix=core.windows.net"
 container_name = "photos"
 blob_service_client = BlobServiceClient.from_connection_string(conn_str=connect_str)
 
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+client = OpenAI(api_key="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")
 
 @bp.route('/mypet', methods=["GET", "POST"])
 @login_required
@@ -56,6 +57,7 @@ def pet_profile():
             print(e)
 
     temp = get_blob_meta_data(blob_name)
+    print(temp)
     if temp:
         pet_data = temp
 

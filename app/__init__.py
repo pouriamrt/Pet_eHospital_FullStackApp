@@ -30,4 +30,7 @@ def create_app(config_class=Config):
     from app.pet_profile import bp as pet_bp
     app.register_blueprint(pet_bp)
 
+    from app.AI_suggestion import bp as suggestion_bp
+    app.register_blueprint(suggestion_bp)
+
     return app
