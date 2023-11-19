@@ -5,6 +5,8 @@ from flask_login import LoginManager
 
 def create_app(config_class=Config):
     app = Flask(__name__)
+    app.debug = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.config.from_object(config_class)
 
     # Initialize Flask extensions here
@@ -29,5 +31,8 @@ def create_app(config_class=Config):
 
     from app.pet_profile import bp as pet_bp
     app.register_blueprint(pet_bp)
+
+    from app.user_profile import bp as user_profile_bp
+    app.register_blueprint(user_profile_bp, url_prefix='/user_profile')
 
     return app
