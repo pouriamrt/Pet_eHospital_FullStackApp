@@ -76,9 +76,11 @@
                     based on your symptom description.</p>
 
                 <p class="d-inline-flex gap-1">
-                    <a class="btn btn-primary active department-btn" data-department="general" role="button" data-bs-toggle="button" aria-pressed="true">general</a>
+                    <a class="btn btn-primary department-btn" data-department="general" role="button" data-bs-toggle="button" aria-pressed="true">general</a>
                     <a class="btn btn-primary department-btn" data-department="orthopedic" role="button" data-bs-toggle="button">orthopedic</a>
                     <a class="btn btn-primary department-btn" data-department="dental" role="button" data-bs-toggle="button">dental</a>
+                <a class="btn btn-primary department-btn" data-department="dental" role="button" data-bs-toggle="button">surgery</a>
+                <a class="btn btn-primary department-btn" data-department="dental" role="button" data-bs-toggle="button">ophthalmology</a>
                 </p>
                 <br>
                 <br>
@@ -242,9 +244,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('.department-btn');
-            const doctorContainer = document.getElementById('doctor-container'); // 添加一个id到你的医生容器
+            const doctorContainer = document.getElementById('doctor-container'); // add id to your doctor container
+            const urlParams = new URLSearchParams(window.location.search);
+            const activeDepartment = urlParams.get('department') || 'general';
 
             buttons.forEach(function(button) {
+                    if (button.getAttribute('data-department') === activeDepartment) {
+                    button.classList.add('active');
+                    fetchDoctors(activeDepartment);
+                }
                 button.addEventListener('click', function() {
                     buttons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
