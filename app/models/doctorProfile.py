@@ -12,7 +12,7 @@ class doctorProfile(db.Model):
 
 
     def __repr__(self):
-        return f'<Post "{self.name}">'
+        return f'<doctorProfile "{self.name}">'
 
     def to_dict(self):
         return {

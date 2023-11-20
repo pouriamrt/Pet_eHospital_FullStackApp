@@ -6,5 +6,5 @@ class Pictures(db.Model):
     pet_img_url = db.Column(db.Text)
 
     def __repr__(self):
-        return f'<Post "{self.name}">'
+        return f'<Pictures "{self.email}">'
     

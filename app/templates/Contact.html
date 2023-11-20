@@ -13,35 +13,34 @@
                     <div class="input-row">
                         <div class="input-group">
                             <label>Name</label>
-                            <input type="text" placeholder="John Lee">
+                            <input type="text" name="name" placeholder="John Lee">
                         </div>
                         <div class="input-group">
                             <label>Phone</label>
-                            <input type="text" placeholder="+1 343 520 3231">
+                            <input type="text" name="phone" placeholder="+1 343 520 3231">
                         </div>
                     </div>
                     <div class="input-row">
                         <div class="input-group">
                             <label>Email</label>
-                            <input type="email" 
+                            <input type="email" name="email"
                             placeholder="Johnlee@gmail.com">
                         </div>
                         <div class="input-group">
                             <label>Subject</label>
-                            <input type="text" placeholder="Product Demo">
+                            <input type="text" name="subject" placeholder="Product Demo">
                         </div>
                     </div>
 
                     <label>Message</label>
-                    <textarea rows="5" placeholder="Your Message"></textarea>
+                    <textarea rows="5" name="message" placeholder="Your Message"></textarea>
                     
                     <div class="container">
                         <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-success px-5 rounded-pill" style="background-color: #30ba8e;">Done</button>
+                            <button type="button" id="submit-button" class="btn btn-success px-5 rounded-pill" style="background-color: #30ba8e;">Done</button>
                         </div>
                     </div>
                 </form>
-
             </div>
             <div class = "contact-right">
                 <h3>Reach Us</h3>
@@ -67,4 +66,28 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function() {
+            const form = document.querySelector('form');
+            const formData = new FormData(form);
+
+            fetch('/submit_contact_request', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Request submitted successfully!');
+                    form.reset();
+                } else {
+                    alert('An error occurred while submitting the request.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the request.');
+            });
+        });
+    </script>
 {% endblock %}
