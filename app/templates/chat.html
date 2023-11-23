@@ -1,0 +1,94 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+    <div>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_chatbot.css')}}"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <div class="container-fluid h-100">
+			<div class="row justify-content-center h-100">		
+				<div class="col-md-8 col-xl-6 chat">
+					<div class="card">
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="/static/logo.png" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>Chat with Doc</span>
+									<p>Ask your question!</p>
+								</div>
+							</div>
+						</div>
+						<div id="messages" class="card-body msg_card_body">
+							
+
+
+						</div>
+						<div class="card-footer">
+							<form id="messageArea" class="input-group">
+                                <input type="text" id="text" name="msg" placeholder="Type your message..." autocomplete="off" class="form-control type_msg" required/>
+								<div class="input-group-append">
+									<button type="submit" id="send" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <script>
+			function getMessages() {
+				$.ajax({
+					url: '/get_messages',
+					method: 'GET',
+					success: function(data) {
+						// Display messages
+						$('#messages').empty();
+						data.forEach(function(message) {
+							if (!message.sender) {
+								$('#messages').append('<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' + message.message + '</div></div>');
+							} else {
+								$('#messages').append('<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + message.message + '</div><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div></div>');
+							}
+							
+						});
+					},
+					error: function(error) {
+						console.error('Error fetching messages:', error);
+					}
+				});
+			}
+
+			$('#messageArea').submit(function(event) {
+				event.preventDefault();
+				const message = $('#text').val();
+
+				$.ajax({
+					url: '/send_message',
+					method: 'POST',
+					data: { message: message },
+					success: function(data) {
+						// On successful send, refresh messages
+						getMessages();
+					},
+					error: function(error) {
+						console.error('Error sending message:', error);
+					}
+				});
+
+				$('#text').val('');
+			});
+
+			// Fetch messages periodically
+			setInterval(getMessages, 5000);
+		</script>
+    </div>
+    <!-- {% for msg in messages %}
+        <script type="text/javascript">
+            createMessage("{{msg.name}}", "{{msg.message}}");
+        </script>
+    {% endfor %} -->
+
+{% endblock %}

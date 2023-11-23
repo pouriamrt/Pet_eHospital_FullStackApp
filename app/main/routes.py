@@ -25,7 +25,7 @@ def chat():
     msg = request.form["msg"]
     reply, recommended_department = get_Chat_response(msg)
     if recommended_department:
-        link_str = ' * Here is the link to the department: <a style="color:red;" href="' + url_for('main.index', _external=True) + '">' + f'The {recommended_department} department</a>'
+        link_str = ' * Here is the link to the department: <a style="color:red;" href="' + url_for('AI_suggestion.get_suggestion_page', department=recommended_department, _external=True) + '">' + f'The {recommended_department} department</a>'
         reply += link_str
         messages.append({"role": "assistant", "content": link_str})
     return reply
