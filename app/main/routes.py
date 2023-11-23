@@ -1,8 +1,10 @@
 from app.main import bp
-from flask import render_template, request, url_for
+from flask import render_template, request, url_for, jsonify
 from flask_login import login_required, current_user
 from openai import OpenAI
 import os
+from app.models.ContactForm import ContactForm
+from app.extensions import db
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 departments = ["general", "dental", "orthopedic", "surgery", "ophthalmology"]
@@ -56,3 +58,18 @@ def about():
 @login_required
 def contact():
     return render_template('Contact.html')
+
+@bp.route('/submit_contact_request', methods=['POST'])
+@login_required
+def submit_contact_request():
+    name = request.form.get('name')
+    phone = request.form.get('phone')
+    email = request.form.get('email')
+    subject = request.form.get('subject')
+    message = request.form.get('message')
+
+    new_request = ContactForm(name=name, phone=phone, email=email, subject=subject, message=message)
+    db.session.add(new_request)
+    db.session.commit()
+
+    return jsonify({'success': True})
