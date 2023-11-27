@@ -30,7 +30,15 @@ def create_app(config_class=Config):
     from app.pet_profile import bp as pet_bp
     app.register_blueprint(pet_bp)
 
+
+    from app.chat import bp as chat_bp
+    app.register_blueprint(chat_bp)
+
     from app.AI_suggestion import bp as suggestion_bp
     app.register_blueprint(suggestion_bp)
+
+    from app.user_profile import bp as user_profile_bp
+    app.register_blueprint(user_profile_bp, url_prefix='/user_profile')
+
 
     return app

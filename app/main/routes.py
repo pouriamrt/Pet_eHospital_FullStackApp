@@ -1,10 +1,13 @@
 from app.main import bp
-from flask import render_template, request, url_for, redirect, jsonify, session
+
+from flask import render_template, request, url_for, jsonify
 from flask_login import login_required, current_user
 from app.extensions import db
 from app.models.ContactForm import ContactForm
 from openai import OpenAI
 import os
+from app.models.ContactForm import ContactForm
+from app.extensions import db
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 departments = ["general", "dental", "orthopedic", "surgery", "ophthalmology"]
@@ -28,7 +31,8 @@ def chat():
     reply, recommended_department = get_Chat_response(msg)
     if recommended_department:
         link_str = ' * Here is the link to the department: <a style="color:red;" href="' + url_for('AI_suggestion.get_suggestion_page', department=recommended_department, _external=True) + '">' + f'The {recommended_department} department</a>'
-        # link_str = f' * Here is the link to the department: <a style="color:red;" href="{url_for('main.get_suggestion_page', department=recommended_department, _external=True)}">The {recommended_department} department</a>'
+
+
         reply += link_str
         messages.append({"role": "assistant", "content": link_str})
     return reply
