@@ -9,6 +9,7 @@ class doctorProfile(db.Model):
     introduction = db.Column(db.String(150))
     speciality = db.Column(db.Text)
     rate = db.Column(db.Numeric(precision=2, scale=1))
+    email = db.Column(db.String(100), unique=True)
 
 
     def __repr__(self):

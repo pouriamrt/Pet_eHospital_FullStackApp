@@ -40,5 +40,8 @@ def create_app(config_class=Config):
     from app.user_profile import bp as user_profile_bp
     app.register_blueprint(user_profile_bp, url_prefix='/user_profile')
 
+    from app.doctor_main import bp as doctor_main_bp
+    app.register_blueprint(doctor_main_bp)
+
 
     return app
