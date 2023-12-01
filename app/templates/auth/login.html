@@ -1,15 +1,9 @@
 {% extends "base_auth.html" %}
 
 {% block content %}
-<<<<<<< Updated upstream
-<div class="column is-4 is-offset-4">
-    <h3 class="title">Client Login</h3>
-    <div class="box">
-=======
 <div class="column is-4 is-offset-4" style="background: transparent; height: 80%; margin-top:70px">
-    <h3 class="title">Login</h3>
+    <h3 class="title">Client Login</h3>
     <div class="box" style="background: transparent">
->>>>>>> Stashed changes
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification is-danger">
@@ -17,7 +11,7 @@
             </div>
         {% endif %}
         {% endwith %}
-            <form method="POST" action="/login">
+        <form method="POST" action="/login">
             <div class="field">
                 <div class="control">
                     <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
@@ -37,19 +31,18 @@
                 </label>
             </div>
 
-<<<<<<< Updated upstream
             <div class="flex-container">
-              <div class="flex-item-left">
-               <a href="{{ url_for('auth.signup') }}">Sign up</a>
-              </div>
-              <div class="flex-item-right">
-                <a href="{{ url_for('auth.doctor_login') }}">I'm a Doctor</a>
-              </div>
-=======
+                <div class="flex-item-left">
+                    <a href="{{ url_for('auth.signup') }}">Sign up</a>
+                </div>
+                <div class="flex-item-right">
+                    <a href="{{ url_for('auth.doctor_login') }}">I'm a Doctor</a>
+                </div>
+            </div>
+
             <div class="field">
                 <a href="{{ url_for('auth.signup') }}" style="color: white">Sign up</a>
                 <a href="{{ url_for('main.index') }}" style="float: right; color: white">Home</a>
->>>>>>> Stashed changes
             </div>
             
             <button class="button is-block is-info is-large is-fullwidth" style="background: #D2B48C">Login</button>
