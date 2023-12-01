@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <!--Profile Photo-->
+    <!--Pet Profile Photo-->
     <div class="text-center my-4">
         <h1 class="mb-4">Pet Profile</h1>
         {% if file_url %}
             <img src="{{ file_url }}" class="rounded img-fluid my-4" width="300px" height="300px" alt="Uploaded Image">
         {% endif %}
 
-        <form method="post" id="uploadForm" action="/mypet" enctype="multipart/form-data" accept=".png, .jpg, .jpeg, .gif">
+        <form method="post" id="uploadForm" action="/mypet" enctype="multipart/form-data"
+              accept=".png, .jpg, .jpeg, .gif">
             <input type="file" name="pet_photo" id="file" required onchange="uploadFile()">
         </form>
         <script>
@@ -16,49 +17,58 @@
                 document.getElementById("uploadForm").submit();
             }
         </script>
-        <!-- <img src="https://yt3.googleusercontent.com/Ako12yRikh00QZgvrOUdk3uaPKrYYNTUfin60K20JC6dHhR7bvqLosRKkQ8rYr6ImivnspqbkSU=s176-c-k-c0x00ffffff-no-rj"
-                alt="profile photo of user's pet" class="rounded img-fluid my-4"> -->
     </div>
     <!--Info form-->
     <section class="container my-4">
-        <form action="submit.php" method="post"> <!-- Replace "submit.php" with your form submission endpoint -->
+        <form action="{{ url_for('pet_profile.submit_pet_profile') }}" method="post">
             <div class="mb-3 row justify-content-center">
                 <label for="name" class="col-sm-1 col-form-label">Name</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="name" name="name" style="background-color: #d8d8d9">
+                    <input type="text" class="form-control" id="name" name="name" style="background-color: #d8d8d9"
+                           value="{{ pet_data['name'] }}">
                 </div>
             </div>
-            <div class="mb-3 row justify-content-center">
+            <div class=" mb-3 row justify-content-center">
                 <label for="type" class="col-sm-1 col-form-label">Type</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="type" name="type" style="background-color: #d8d8d9" value="{{ pet_data['type'] }}" readonly>
+                    <input type="text" class="form-control" id="type" name="type" style="background-color: #d8d8d9"
+                           value="{{ pet_data['type'] }}">
                 </div>
             </div>
             <div class="mb-3 row justify-content-center">
                 <label for="age" class="col-sm-1 col-form-label">Age</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="age" name="age" style="background-color: #d8d8d9">
+                    <input type="text" class="form-control" id="age" name="age" style="background-color: #d8d8d9"
+                           value="{{ pet_data['age'] }}"
+                    >
                 </div>
             </div>
-            <div class="mb-3 row justify-content-center">
+            <div class=" mb-3 row justify-content-center">
                 <label for="breed" class="col-sm-1 col-form-label">Breed</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="breed" name="breed" style="background-color: #d8d8d9" value="{{ pet_data['breed'] }}" readonly>
+                    <input type="text" class="form-control" id="breed" name="breed"
+                           style="background-color: #d8d8d9"
+                           value="{{ pet_data['breed'] }}">
                 </div>
             </div>
             <div class="mb-3 row justify-content-center">
                 <label for="weight" class="col-sm-1 col-form-label">Weight</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" id="weight" name="weight" style="background-color: #d8d8d9">
+                    <input type="text" class="form-control" id="weight" name="weight"
+                           style="background-color: #d8d8d9"
+                           value="{{ pet_data['weight'] }}"
+                    >
                 </div>
             </div>
             <!-- Done button -->
-            <div class="container-submit">
+            <div class=" container-submit">
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-success px-5 rounded-pill" style="background-color: #30ba8e;">Done</button>
+                    <button type="submit" class="btn btn-success px-5 rounded-pill"
+                            style="background-color: #30ba8e;">
+                        Done
+                    </button>
                 </div>
             </div>
         </form>
     </section>
-
 {% endblock %}
