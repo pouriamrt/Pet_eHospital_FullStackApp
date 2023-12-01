@@ -4,7 +4,8 @@
     <div>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles_chatbot.css')}}"/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-        <div class="container-fluid h-100">
+        <script type="text/javascript" src="//cdn.socket.io/4.4.1/socket.io.min.js"></script>
+		<div class="container-fluid h-100">
 			<div class="row justify-content-center h-100">		
 				<div class="col-md-8 col-xl-6 chat">
 					<div class="card">
@@ -26,20 +27,53 @@
 
 						</div>
 						<div class="card-footer">
-							<form id="messageArea" class="input-group">
+							<!--<form id="messageArea" class="input-group">-->
                                 <input type="text" id="text" name="msg" placeholder="Type your message..." autocomplete="off" class="form-control type_msg" required/>
-								<div class="input-group-append">
+								<!--<div class="input-group-append">
 									<button type="submit" id="send" class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></button>
-								</div>
-							</form>
+								</div>-->
+							<!--</form>-->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<script type="text/javascript" charset="utf-8">
+            var socket;
+            $(document).ready(function(){
+                socket = io.connect('http://' + document.domain + ':' + location.port + '/chat');
+                socket.on('connect', function() {
+                    socket.emit('joined', {});
+                });
+                /*socket.on('status', function(data) {
+                    $('#messages').val($('#messages').val() + '<' + data.msg + '>\n');
+                    $('#messages').scrollTop($('#messages')[0].scrollHeight);
+                });*/
+                socket.on('message', function(data) {
+                    $('#messages').append('<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + data.msg + '</div><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div></div>');
+                    $('#messages').scrollTop($('#messages')[0].scrollHeight);
+                });
+                $('#text').keypress(function(e) {
+                    var code = e.keyCode || e.which;
+                    if (code == 13) {
+                        text = $('#text').val();
+                        $('#text').val('');
+                        socket.emit('text', {msg: text});
+                    }
+                });
+            });
+            function leave_room() {
+                socket.emit('left', {}, function() {
+                    socket.disconnect();
+                    // go back to the login page
+                    window.location.href = "{{ url_for('auth.logout') }}";
+                });
+            }
+        </script>
+
         <script>
-			function getMessages() {
+			$(document).ready(function() {
 				$.ajax({
 					url: '/get_messages',
 					method: 'GET',
@@ -59,9 +93,9 @@
 						console.error('Error fetching messages:', error);
 					}
 				});
-			}
+			})
 
-			$('#messageArea').submit(function(event) {
+			/*$('#messageArea').submit(function(event) {
 				event.preventDefault();
 				const message = $('#text').val();
 
@@ -82,7 +116,7 @@
 			});
 
 			// Fetch messages periodically
-			setInterval(getMessages, 5000);
+			setInterval(getMessages, 5000);*/
 		</script>
     </div>
     <!-- {% for msg in messages %}

@@ -8,22 +8,24 @@ from sqlalchemy import or_, and_
 @bp.route("/chat")
 @login_required
 def room():
+    session["room"] = "_".join(sorted([session['email'], "pmort101@uottawa.ca"]))
     return render_template("chat.html")
 
-@bp.route("/send_message", methods=['POST'])
-@login_required
-def send_msg():
-    sender_email = session['email']
-    receiver_email = "pmort101@uottawa.ca" #request.form['receiver_email']
-    message = request.form['message']
+# @bp.route("/send_message", methods=['POST'])
+# @login_required
+# def send_msg():
+#     sender_email = session['email']
+#     receiver_email = "pmort101@uottawa.ca" #request.form['receiver_email']
+#     message = request.form['message']
     
-    new_message = Chats(sender=sender_email, receiver=receiver_email, message=message)
-    db.session.add(new_message)
-    db.session.commit()
+#     new_message = Chats(sender=sender_email, receiver=receiver_email, message=message)
+#     db.session.add(new_message)
+#     db.session.commit()
     
-    return jsonify({'success': True})
+#     return jsonify({'success': True})
 
 @bp.route('/get_messages', methods=['GET'])
+@login_required
 def get_messages():
     sender_email = session['email']
     receiver_email = "pmort101@uottawa.ca" #request.args.get('receiver_id')

@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <link href="/static/styles_contact.css" rel="stylesheet" />
+    <div class = "container">
+        <div class="container">
+            <div class="row align-items-start">
+              <div class="col">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/portrait-of-a-happy-young-doctor-in-his-clinic-royalty-free-image-1661432441.jpg?crop=0.66698xw:1xh;center,top&resize=1200:*" class="img-fluid" alt="doctor">
+              </div>
+              <div class="col">
+                <h2>Dr Dre Andre Romelle</h2>
+                <img src="/static/star.png" alt="star" style="height: 30px;">
+                <p class="text-start">Respiratory Department Chief Physician
+                    Shanghai Public Health Clinical Center.</p>
+                <p class="text-start"><b>Introduction: </b>Male, Doctor of Medicine, Associate Chief Physician, Master's Supervisor, Young Medical Talent in Yancheng City.</p>
+                
+                <div class="d-flex gap-2 justify-content-center">
+                    <b>Specialties: </b><span class="badge rounded-pill text-bg-secondary">Pneumonia</span><span class="badge rounded-pill text-bg-secondary">bronchiectasis</span><span class="badge rounded-pill text-bg-secondary">chronic bronchitis</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="row align-items-start">
+                <!-- <ul class="nav nav-underline">
+                    <li class="nav-item"></li>
+                      <a class="nav-link active" aria-current="page" href="#">
+                       Comments
+                      </a>
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                  </ul> -->
+                  <div class="container mt-5">
+                    <!-- <ul class="nav nav-tabs" id="myTabs">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="comments-tab" data-toggle="tab" href="#comments"> Patient Comments</a>
+                        
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="faqs-tab" data-toggle="tab" href="#faqs">FAQs</a>
+                      </li>
+                    </ul> -->
+                    <h2>Patient Comments</h2>
+                  
+                    <div class="tab-content mt-2">
+                      <div class="tab-pane fade show active" id="comments">
+                        <div class="media mb-4">
+                            <img src="patient-avatar-1.jpg" class="mr-3 rounded-circle" alt="John Doe's Avatar" style="width: 50px;">
+                            <div class="media-body">
+                              <h5 class="mt-0">John Doe</h5>
+                              <div class="text-muted mb-2">Posted on: October 15, 2023</div>
+                              <div class="rating">
+                                <!-- Assuming the score is out of 5 -->
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9734;</span> <!-- Empty star for a 4-star rating -->
+                              </div>
+                              <p>
+                                "Great experience with the veterinarians! They provided excellent care for my pet. The staff is friendly, and the facilities are clean. Highly recommended!"
+                              </p>
+                            </div>
+                          </div>
+                      </div>
+
+                      <div class="media mb-4">
+                        <img src="patient-avatar-2.jpg" class="mr-3 rounded-circle" alt="Alice Smith's Avatar" style="width: 50px;">
+                        <div class="media-body">
+                          <h5 class="mt-0">Alice Smith</h5>
+                          <div class="text-muted mb-2">Posted on: October 10, 2023</div>
+                          <div class="rating">
+                            <!-- Assuming the score is out of 5 -->
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span> <!-- Full stars for a 5-star rating -->
+                          </div>
+                          <p>
+                            "Outstanding service! The veterinarians were knowledgeable and caring. My pet's health improved significantly after the consultation. Thank you!"
+                          </p>
+                        </div>
+                      </div>
+                      <!-- <div class="tab-pane fade" id="faqs">
+                        <h3 class="mb-4">FAQs Tab Content</h3>
+                      <div class="tab-pane fade" id="faqs">
+                        <div class="accordion" id="faqAccordion">
+                            <div class="card">
+                              <div class="card-header" id="faqHeading1">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link" data-toggle="collapse" data-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                                    How do I create a pet profile?
+                                  </button>
+                                </h5>
+                              </div>
+                        
+                              <div id="faqCollapse1" class="collapse show" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
+                                <div class="card-body">
+                                  To create a pet profile, log in to your account, navigate to the "Pet Profiles" section, and use the provided form to enter your pet's information.
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                    </div>
+                  </div> -->
+            </div>
+          </div>
+
+    </div>
+{% endblock %}

@@ -2,4 +2,4 @@ from flask import Blueprint
 
 bp = Blueprint('chat', __name__)
 
-from app.chat import routes
+from app.chat import routes, events

@@ -15,8 +15,9 @@
         }
 
         .content {
-            margin: 5px;
+            /*margin: 5px;*/
             width: 100%;
+            height: 900px;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -59,12 +60,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 </head>
 <body>
-    <nav>
+    <!-- <nav>
         <a href="{{ url_for('main.index') }}">Home</a>
     </nav>
-    <hr>
-    <div class="content">
-        {% block content %} {% endblock %}
+    <hr> -->
+    <div class="container">
+        <div class="content" style="background-image: url('https://s2.loli.net/2023/11/27/QzhUgp8n9ocyFkC.jpg'); width: 100%;">
+            {% block content %} {% endblock %}
+        </div>
     </div>
 </body>
 </html>

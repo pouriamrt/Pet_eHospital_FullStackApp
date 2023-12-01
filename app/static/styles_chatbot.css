@@ -5,7 +5,8 @@
 .card{
 	height: 650px;
 	border-radius: 15px !important;
-	background-color: rgba(0,0,0,0.2) !important;
+	/*background-color: rgba(0,0,0,0.2) !important;*/
+	background-color: #6A5ACD !important;
 }
 .contacts_body{
 	padding:  0.75rem 0 !important;

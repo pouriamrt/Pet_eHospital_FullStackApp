@@ -2,6 +2,9 @@ from flask import Flask
 from app.extensions import db
 from config import Config
 from flask_login import LoginManager
+from flask_socketio import SocketIO
+
+socketio = SocketIO()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -40,8 +43,12 @@ def create_app(config_class=Config):
     from app.user_profile import bp as user_profile_bp
     app.register_blueprint(user_profile_bp, url_prefix='/user_profile')
 
+<<<<<<< Updated upstream
     from app.doctor_main import bp as doctor_main_bp
     app.register_blueprint(doctor_main_bp)
 
+=======
+    socketio.init_app(app)
+>>>>>>> Stashed changes
 
     return app

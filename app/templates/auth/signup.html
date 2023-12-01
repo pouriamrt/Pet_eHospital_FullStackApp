@@ -1,9 +1,9 @@
 {% extends "base_auth.html" %}
 
 {% block content %}
-<div class="column is-4 is-offset-4">
+<div class="column is-4 is-offset-4" style="background-color: transparent; height: 80%; margin-top:70px">
     <h3 class="title">Sign Up</h3>
-    <div class="box">
+    <div class="box" style="background: transparent">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification is-danger">
@@ -43,10 +43,11 @@
             </div>
 
             <div class="field">
-                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.login') }}" style="color: white">Login</a>
+                <a href="{{ url_for('main.index') }}" style="float: right; color: white">Home</a>
             </div>
 
-            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
+            <button class="button is-block is-info is-large is-fullwidth" style="background: #D2B48C">Sign Up</button>
         </form>
     </div>
 </div>
