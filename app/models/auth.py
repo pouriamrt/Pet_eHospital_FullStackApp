@@ -8,7 +8,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
 
     def __repr__(self):
-        return f'<Post "{self.name}">'
+        return f'<User "{self.name}">'
 
 class DoctorUser(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,0 +1,124 @@
+{% extends 'doctor_side/doctor_base.html' %}
+
+{% block content %}
+<!--Profile Photo-->
+<div class="text-center my-4">
+    <h1 class="mb-4">{{ user.name }}'s Profile</h1>
+    <img src="/static/logo.png" width="40%"
+         alt="profile photo of user's pet" class="rounded img-fluid my-4">
+</div>
+<!--Info form-->
+<section class="container my-4">
+    <div class="mb-3 row justify-content-center">
+        <label for="name" class="col-sm-1 col-form-label">Name</label> ___
+        <label for="name" class="col-sm-1 col-form-label">{{ user.name }}</label>
+    </div>
+    <div class="mb-3 row justify-content-center">
+        <label for="email" class="col-sm-1 col-form-label">Email</label> ___
+        <label for="email" class="col-sm-1 col-form-label">{{ user.email }}</label>
+    </div>
+    <!-- Done button -->
+    <div class="container">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-success px-5 rounded-pill"
+                    style="background-color: #30ba8e;" onclick="edit()">Edit Profile
+            </button>
+        </div>
+    </div>
+</section>
+
+<section id="edit" class="container my-4" style="visibility: hidden">
+    <form method="post" onsubmit="return validate_password()">
+        <div class="mb-3 row justify-content-center">
+            <label for="name" class="col-sm-1 col-form-label">Name</label>
+            <div class="col-sm-5">
+                <input type="text" placeholder="New Name" class="form-control" id="name" name="name"
+                       style="background-color: #d8d8d9">
+            </div>
+        </div>
+        <div class="mb-3 row justify-content-center">
+            <label for="email" class="col-sm-1 col-form-label">Email</label>
+            <div class="col-sm-5">
+                <input type="text" placeholder="New Email Address" class="form-control" id="email" name="email"
+                       style="background-color: #d8d8d9">
+            </div>
+        </div>
+        <div class="mb-3 row justify-content-center">
+            <label for="password" class="col-sm-1 col-form-label">Password</label>
+            <div class="col-sm-5">
+                <input type="text" placeholder="New Password" class="form-control" id="password" name="password"
+                       style="background-color: #d8d8d9">
+            </div>
+        </div>
+        <div class="mb-3 row justify-content-center">
+            <label for="password" class="col-sm-1 col-form-label">Double Check</label>
+            <div class="col-sm-5">
+                <input type="text" placeholder="Double Checked New Password" class="form-control"
+                       id="double_checked_password" name="double_checked_password" style="background-color: #d8d8d9">
+            </div>
+            <span id="password_match"></span>
+        </div>
+        <div class="mb-3 row justify-content-center">
+            <label for="speciality" class="col-sm-1 col-form-label">Speciality</label>
+            <div class="col-sm-5">
+                <input type="text" placeholder="New Speciality" class="form-control" id="speciality" name="speciality"
+                       style="background-color: #d8d8d9">
+            </div>
+        </div>
+        <div class="mb-3 row justify-content-center">
+            <label for="position" class="col-sm-1 col-form-label">Position</label>
+            <div class="col-sm-5">
+                <input type="text" placeholder="New Position" class="form-control" id="position" name="position"
+                       style="background-color: #d8d8d9">
+            </div>
+        </div>
+        <div class="mb-3 row justify-content-center">
+            <label for="department" class="col-sm-1 col-form-label">Department</label>
+            <div class="col-sm-5">
+                <input type="text" placeholder="New Department" class="form-control" id="department" name="department"
+                       style="background-color: #d8d8d9">
+            </div>
+        </div>
+        <div class="mb-3 row justify-content-center">
+            <label for="introduction" class="col-sm-1 col-form-label">Introduction</label>
+            <div class="col-sm-5">
+                <input type="text" placeholder="New Introduction" class="form-control" id="introduction"
+                       name="introduction" style="background-color: #d8d8d9">
+            </div>
+        </div>
+                <!-- Done button -->
+        <div class="container">
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success px-5 rounded-pill" style="background-color: #30ba8e;">
+                    Submit
+                </button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<script>
+    function edit() {
+        let section = document.getElementById("edit");
+        if (section.style.visibility === "hidden") {
+            section.style.visibility = "visible";
+        } else {
+            section.style.visibility = "hidden";
+        }
+    }
+
+    function validate_password() {
+        let password = document.getElementById("password").value;
+        let double_checked_password = document.getElementById("double_checked_password").value;
+        let password_match = document.getElementById("password_match");
+        if (password !== double_checked_password) {
+            password_match.innerHTML = "Password Do Not Match!";
+            return false;
+        } else {
+            password_match.innerHTML = "";
+            return true;
+        }
+    }
+</script>
+
+{% endblock %}
