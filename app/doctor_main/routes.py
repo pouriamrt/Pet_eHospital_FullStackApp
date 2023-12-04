@@ -1,5 +1,4 @@
 from app.doctor_main import bp
-
 from flask import render_template, request, url_for, jsonify
 from flask_login import login_required, current_user
 from app.extensions import db

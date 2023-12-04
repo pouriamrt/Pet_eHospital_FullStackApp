@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+    <div class="row mt-2">
+        <div class="col-md-10 offset-lg-1">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Client Email</th>
+                    <th scope="col">Doctor Email</th>
+                    <th scope="col">Chat Page</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    {% for paid_chat in paid_chats %}    
+                        <tr>
+                            <th scope="row">{{ paid_chat.timestamp.strftime("%Y-%m-%d") }}</th>
+                            <td>{{ paid_chat.user }}</td>
+                            <td>{{ paid_chat.doctor_email }}</td>
+                            <td><a href="{{ url_for('chat.paid_room') }}"><button type="button" class="btn btn-success">Open Chat</button></a></td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

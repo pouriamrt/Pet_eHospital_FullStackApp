@@ -1,6 +1,5 @@
 from app.main import bp
-
-from flask import render_template, request, url_for, jsonify
+from flask import render_template, request, url_for, jsonify, session
 from flask_login import login_required, current_user
 from app.extensions import db
 from app.models.ContactForm import ContactForm
@@ -8,6 +7,7 @@ from openai import OpenAI
 import os
 from app.models.ContactForm import ContactForm
 from app.extensions import db
+from app.models.paid_chats import PaidChats
 
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 departments = ["general", "dental", "orthopedic", "surgery", "ophthalmology"]
@@ -79,3 +79,9 @@ def submit_contact_request():
 
     return jsonify({'success': True})
 
+
+@bp.route('/my_chats')
+@login_required
+def my_chats():
+    paid_chats = PaidChats.query.filter_by(user=session['email']).order_by(PaidChats.timestamp).all()
+    return render_template('paid_chats.html', paid_chats=paid_chats)

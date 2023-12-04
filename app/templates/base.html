@@ -33,7 +33,7 @@
 							<a class="nav-link px-3" href="{{ url_for('main.about') }}"><h6>About</h6></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link px-3" href="#"><h6>Services</h6></a>
+							<a class="nav-link px-3" href="{{ url_for('main.my_chats') }}"><h6>My Chats</h6></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link px-3" href="{{ url_for('main.contact') }}"><h6>Contact</h6></a>
@@ -62,7 +62,7 @@
 		<div class="container-fluid mt-3">
 			<div class="row">
 				<div class="col-lg-2"></div>
-				<div class="col-lg-8 p-3">
+				<div class="col-lg-8 p-3" style="min-height: 320px;">
 					{% block content %} {% endblock %}
 				</div>
 				<div class="col-lg-2"></div>

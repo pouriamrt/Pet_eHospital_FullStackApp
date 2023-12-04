@@ -1,15 +1,21 @@
-from flask import render_template, session, request, jsonify
+from flask import render_template, session, redirect, jsonify, url_for
 from app.chat import bp
 from flask_login import login_required
 from app.models.chats import Chats
 from app.extensions import db
 from sqlalchemy import or_, and_
 
-@bp.route("/chat")
+@bp.route("/chatroom")
 @login_required
 def room():
     session["room"] = "_".join(sorted([session['email'], "pmort101@uottawa.ca"]))
     return render_template("chat.html")
+
+@bp.route("/paid_chat")
+@login_required
+def paid_room():
+    # add session for doctor
+    return redirect(url_for('chat.room'))
 
 # @bp.route("/send_message", methods=['POST'])
 # @login_required
