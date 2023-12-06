@@ -8,6 +8,8 @@ socketio = SocketIO()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
+    app.debug = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.config.from_object(config_class)
 
     # Initialize Flask extensions here
@@ -33,6 +35,7 @@ def create_app(config_class=Config):
     from app.pet_profile import bp as pet_bp
     app.register_blueprint(pet_bp)
 
+<<<<<<< HEAD
 
     from app.chat import bp as chat_bp
     app.register_blueprint(chat_bp)
@@ -54,4 +57,9 @@ def create_app(config_class=Config):
 
     socketio.init_app(app)
 
+=======
+    from app.user_profile import bp as user_profile_bp
+    app.register_blueprint(user_profile_bp, url_prefix='/user_profile')
+
+>>>>>>> 1a22a7e358ff1bed34c6e598981293764ecef85d
     return app
