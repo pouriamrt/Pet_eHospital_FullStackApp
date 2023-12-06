@@ -46,6 +46,9 @@ def create_app(config_class=Config):
     from app.doctor_main import bp as doctor_main_bp
     app.register_blueprint(doctor_main_bp)
 
+    from app.doctor_profile import bp as doctor_profile_bp
+    app.register_blueprint(doctor_profile_bp)
+
     from app.checkout import bp as checkout_bp
     app.register_blueprint(checkout_bp)
 
