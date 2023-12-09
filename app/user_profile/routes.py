@@ -10,10 +10,11 @@ from werkzeug.security import generate_password_hash
 @login_required
 def doctor_user_profile():
     doctor_User = DoctorUser.query.filter_by(id=current_user.id).first()
-    doctor_profile = doctorProfile.query.filter_by(id=doctor_User.email).first()
+    doctor_profile = doctorProfile.query.filter_by(email=doctor_User.email).first()
     
     if request.method == 'POST':
         flag = False
+        print(doctor_User.email)
         if request.form['name']:
             doctor_User.name = request.form['name']
             flag = True
@@ -63,4 +64,4 @@ def user_profile():
             db.session.commit()
         return redirect(url_for('user_profile.user_profile'))
 
-    return render_template('doctor_user_profile.html', user=user)
+    return render_template('user_profile.html', user=user)
