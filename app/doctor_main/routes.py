@@ -1,10 +1,6 @@
 from app.doctor_main import bp
-<<<<<<< HEAD
-from flask import render_template, request, url_for, jsonify
-=======
 
 from flask import render_template, request, url_for, jsonify, session
->>>>>>> 60ffcc45cfb25fb7b72f8b74c2c3ffc1b817cd35
 from flask_login import login_required, current_user
 
 from app.models.doctorProfile import doctorProfile
