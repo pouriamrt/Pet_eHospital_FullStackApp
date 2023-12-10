@@ -1,97 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-.container{
+body {
+    background: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
     width: 100%;
     margin: 50px auto;
 }
 
-.container-submit {
-    width: 100%;
-    margin: 5px auto;
+h1, h3 {
+    color: #0066cc;
 }
 
-.contact-box{
-    background: #fff;
-    display: flex;
-}
-
-.contact-left{
-    flex-basis: 60%;
-    padding: 40px 60px;
-}
-
-.contact-right{
-    flex-basis: 40%;
-    padding: 40px;
-    background: #1c00b5;
-    color : white;
-}
-h1{
-    margin-bottom: 10px;
-}
-.container p{
-    margin-bottom: 40px;
-}
-
-.input-row{
-    display: flex;
-    justify-content: space-between;
+p {
     margin-bottom: 20px;
 }
 
-.input-row .input-group{
-    flex-basis: 45%;
-}
-input{
-    width: 100%;
-    border: none;
-    border-bottom : 1px solid #ccc;
-    outline : none;
-    padding-bottom: 5px;
+.contact-box {
+    background: #fff;
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-textarea{
+.contact-left, .contact-right {
+    padding: 40px;
+}
+
+.contact-left {
+    flex-basis: 60%;
+}
+
+.contact-right {
+    flex-basis: 40%;
+    background: #0066cc;
+    color: white;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #0066cc;
+}
+
+input, textarea {
     width: 100%;
+    padding: 10px;
     border: 1px solid #ccc;
-    outline : none;
-    padding : 10px;
+    border-radius: 5px;
+    margin-top: 6px;
     box-sizing: border-box;
 }
 
-label{
-    margin-bottom: 6px;
-    display: block;
-    color: #1c00b5;
+textarea {
+    resize: vertical;
 }
 
-/*button{
-    background: #1c00b5;
-    width: 100px;
+button {
+    background: #0066cc;
+    width: 100%;
     border: none;
     outline: none;
     color: #fff;
-    height: 35px;
-    border-radius: 30px;
+    height: 40px;
+    border-radius: 5px;
     margin-top: 20px;
-    box-shadow: 0px 5px 15px 0px rgba(28,0,181,0.3);
-}*/
-
-.contact-left h3{
-    color: #1c00b5;
-    font-weight: 600;
-    margin-bottom: 30px;
+    cursor: pointer;
 }
 
-.contact-right h3{
-    font-weight: 600;
-    margin-bottom: 30px;
+.contact-right table {
+    width: 100%;
+    margin-top: 20px;
 }
 
-tr td:firsth-child{
-    padding-right: 20px;
-    margin: 10px;
+table td {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
 }
 
-tr td{
-    padding-top: 20px;
-    padding-right: 10px;
+table td:last-child {
+    text-align: right;
 }

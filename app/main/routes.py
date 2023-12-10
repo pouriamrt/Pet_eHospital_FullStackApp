@@ -9,7 +9,7 @@ from app.models.ContactForm import ContactForm
 from app.extensions import db
 from app.models.paid_chats import PaidChats
 
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+client = OpenAI(api_key="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")
 departments = ["general", "dental", "orthopedic", "surgery", "ophthalmology"]
 
 @bp.route('/')

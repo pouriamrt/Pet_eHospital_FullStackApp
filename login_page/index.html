@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html lang="kr">
+<html>
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<title>index</title>
+<link rel="stylesheet" type="text/css" href="css/content.css">
+<link rel="stylesheet" type="text/css" href="css/font.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="css/bootstrap-icons/bootstrap.css?_t=2">
+<script src="js/jquery-3.7.1.min.js"></script>
+<body>
+    <div class="container">
+        <div class="cont_group">
+            <div class="content">
+              <h1>Choose Account Type</h1>
+              <div class="block01">
+                  <ul>
+                    <li>
+                      <a href="#none" id="Doctor">
+                        <div class="img">
+                          <img src="/img/img_doctor.png">
+                        </div>
+                        <span>Doctor</span>
+                      </a>
+                      <div class="txt doctor">
+                        <p>Hello Doctor!</p>
+                        <p>Plase fill out the form below to get started</p>
+                      </div>
+                      <div class="txt title">
+                        <p>Hello there!</p>
+                        <p>Please choose between docotor and client</p>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="#none" id="user">
+                        <div class="img">
+                          <img src="/img/img_user.png">
+                        </div>
+                        <span>Client</span>
+                      </a>
+                      <div class="txt user">
+                        <p>Hello Client!</p>
+                        <p>Plase fill out the form below to get started</p>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+              <div class="block02">
+                <div class="inform">
+                  <label class="email">
+                    <i class="bi bi-envelope"></i>
+                    <input type="text" id="email" placeholder="Email">
+                    </label>
+                  
+                  <label class="password flex">
+                    <i class="bi bi-lock"></i>
+                    <input type="password" placeholder="password">
+                    <span><a href="">Forgot?</a></span>
+                  </label>
+                </div>
+                <div class="login_wrap">
+                  <ul class="flex jc-sb">
+                    <li class="join">
+                      <span>No account?</span>
+                      <a href="">Sign up</a>
+                    </li>
+                    <li class="login">
+                      <a href="">Login</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+ <script type="text/javascript">
+  $(document).ready(function(){
+    $('.txt.title').css('display','block');
+    $('#Doctor').on("click", function(){
+      $('.txt.title').css('display','none');
+      $('#Doctor').parent( 'li' ).addClass('on');
+      $('#user').parent( 'li' ).removeClass('on');
+      $('.txt.doctor').css('display','block');
+      $('.txt.user').css('display','none');
+    
+  })
+
+  $(document).ready(function(){
+    $('.txt.title').css('display','block');
+    $('#user').on("click", function(){
+      $('.txt.title').css('display','none');
+      $('#user').parent( 'li' ).addClass('on');
+      $('#Doctor').parent( 'li' ).removeClass('on');
+
+      $('.txt.user').css('display','block');
+      $('.txt.doctor').css('display','none');
+  })
+  
+   })
+
+  
+});
+
+   
+
+
+
+
+   $('input').on("focus", function(){
+  var input = $(this);
+  // assuming label is the parent, i.e. <label><input /></label>
+  var label = $(this).parent();
+  label.addClass('focussed');
+  input.on("blur", function(){
+    label.removeClass('focussed');
+    input.off("blur");
+  });
+});
+   
+</script> 
+
+
+

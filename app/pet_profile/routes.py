@@ -10,12 +10,12 @@ from app.models.petProfile import PetProfile
 from app.extensions import db
 
 # Setting up connection string and blob service client for Azure Blob Storage
-connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
+connect_str = "DefaultEndpointsProtocol=https;AccountName=ph0t0st0rage;AccountKey=iXyMmN6ceBCv0mhaI7YxzBQiV4ctgHFi0ohtOBFbTUR6h+4oPBjcceJhpG6ZrJBmG1O2l6Ib7LhS+AStsB2Sww==;EndpointSuffix=core.windows.net"
 container_name = "photos"
 blob_service_client = BlobServiceClient.from_connection_string(conn_str=connect_str)
 
 # Setting up OpenAI client with API key
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+client = OpenAI(api_key="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")
 
 # Route for handling profile info submission
 @bp.route('/submit_pet_profile', methods=['POST'])
