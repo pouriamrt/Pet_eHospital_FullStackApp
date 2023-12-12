@@ -37,7 +37,7 @@ def submit_pet_profile():
         return redirect(url_for('pet_profile.pet_profile'))  # Make sure this is the correct function name for redirect
 
     # Check if the current user already has a pet profile
-    existing_pet_profile = PetProfile.query.filter_by(user_id=current_user.id).first()
+    existing_pet_profile = PetProfile.query.filter_by(user_email=session['email']).first()
 
     if existing_pet_profile:
         # Update existing record
@@ -51,7 +51,7 @@ def submit_pet_profile():
     else:
         # Create a new PetProfile instance and save it to the database
         new_pet_profile = PetProfile(name=name, pet_type=pet_type, age=age, breed=breed, weight=weight,
-                                     user_id=current_user.id)
+                                     user_email=session['email'])
         db.session.add(new_pet_profile)
         db.session.commit()
         flash('Pet profile created successfully!', 'success')
@@ -75,7 +75,7 @@ def pet_profile():
         pet_data = temp
 
     # Query for the current user's pet profile
-    user_pet_profile = PetProfile.query.filter_by(user_id=current_user.id).first()
+    user_pet_profile = PetProfile.query.filter_by(user_email=session['email']).first()
 
     # Check if a new image was uploaded and recognized successfully
     if request.method == "POST" and 'pet_photo' in request.files:

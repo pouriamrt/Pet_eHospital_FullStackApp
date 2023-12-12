@@ -8,7 +8,7 @@
             <div class="col-lg-4 offset-lg-1">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="doctor_profile.doctor_img_url"
+                        <img src="{{ doctor_profile.doctor_img_url }}"
                              alt="avatar"
                              class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3">{{doctor_profile.name}}</h5>
@@ -42,14 +42,14 @@
                     <tbody>
                     {% for client_info in client_infos %}
                     <tr>
-                        <th scope="row">{{ client_info.created_timestamp }}</th>
+                        <th scope="row">{{ client_info.timestamp.strftime("%Y-%m-%d") }}</th>
                         <td>{{ client_info.name }}</td>
                         <td>{{ client_info.pet_name }}-{{ client_info.pet_type }}-{{ client_info.age }}years old-{{
                             client_info.breed }}-{{ client_info.weight }}kg
                         </td>
                         <td>{{ client_info.status }}</td>
                         <td>
-                            <button type="button" class="btn btn-primary">Open Chat</button>
+                            <button onclick="chat_page('{{ client_info.client_email }}')" type="button" class="btn btn-primary">Open Chat</button>
                             <!-- Other buttons -->
                         </td>
                     </tr>
@@ -62,5 +62,23 @@
 
     </div>
 </main>
+
+    <script>
+        function chat_page(email) {
+            console.log(email);
+        
+            $.ajax({
+                url: "/paid_chat",
+                type: "POST",
+                data: email,
+                success: function(data) {
+                    window.location.href = "/paid_chat";
+                },
+                error: function(data) {
+                    alert("Error");
+                }
+            });
+        }
+    </script>
 
 {% endblock %}

@@ -51,8 +51,13 @@
                     $('#messages').scrollTop($('#messages')[0].scrollHeight);
                 });*/
                 socket.on('message', function(data) {
-                    $('#messages').append('<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + data.msg + '</div><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div></div>');
-                    $('#messages').scrollTop($('#messages')[0].scrollHeight);
+					if(data.sender_sid === socket.id) {
+						$('#messages').append('<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + data.msg + '</div><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div></div>');
+						$('#messages').scrollTop($('#messages')[0].scrollHeight);
+					} else {
+						$('#messages').append('<div class="d-flex justify-content-start mb-4"><div class="img_cont_msg"><img src="https://i.ibb.co/d5b84Xw/Untitled-design.png" class="rounded-circle user_img_msg"></div><div class="msg_cotainer">' + data.msg + '</div></div>');
+						$('#messages').scrollTop($('#messages')[0].scrollHeight);
+					}
                 });
                 $('#text').keypress(function(e) {
                     var code = e.keyCode || e.which;

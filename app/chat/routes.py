@@ -1,4 +1,4 @@
-from flask import render_template, session, redirect, jsonify, url_for
+from flask import render_template, session, redirect, jsonify, url_for, request
 from app.chat import bp
 from flask_login import login_required
 from app.models.chats import Chats
@@ -9,12 +9,16 @@ from sqlalchemy import or_, and_
 @login_required
 def room():
     session["room"] = "_".join(sorted([session['email'], session['doc_email']]))
+    print(session["room"])
     return render_template("chat.html")
 
-@bp.route("/paid_chat")
+@bp.route("/paid_chat", methods=['GET', 'POST'])
 @login_required
 def paid_room():
-    # add session for doctor
+    if request.method == 'POST':
+        session['doc_email'] = request.get_data().decode()
+        print(session['doc_email'])
+    
     return redirect(url_for('chat.room'))
 
 # @bp.route("/send_message", methods=['POST'])

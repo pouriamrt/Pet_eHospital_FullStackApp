@@ -9,7 +9,7 @@ class PetProfile(db.Model):
     age = db.Column(db.Integer, index=True, unique=False)
     breed = db.Column(db.String(64), index=True, unique=False)
     weight = db.Column(db.Float, index=True, unique=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))  # Assuming you have a User model for the owner
+    user_email = db.Column(db.Integer, db.ForeignKey('user.email'))  # Assuming you have a User model for the owner
 
     def __repr__(self):
         return f'<PetProfile {self.name}>'

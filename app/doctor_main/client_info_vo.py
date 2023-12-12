@@ -12,3 +12,4 @@ class ClientInfoVo:
     breed: str
     weight: float
     status: str
+    client_email: str

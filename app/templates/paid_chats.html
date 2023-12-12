@@ -19,7 +19,7 @@
                             <th scope="row">{{ paid_chat.timestamp.strftime("%Y-%m-%d") }}</th>
                             <td>{{ paid_chat.user }}</td>
                             <td>{{ paid_chat.doctor_email }}</td>
-                            <td><a href="{{ url_for('chat.paid_room') }}"><button type="button" class="btn btn-success">Open Chat</button></a></td>
+                            <td><button onclick="chat_page('{{ paid_chat.doctor_email }}')" type="button" class="btn btn-success">Open Chat</button></td>
                         </tr>
                     {% endfor %}
 
@@ -27,5 +27,23 @@
             </table>
         </div>
     </div>
+
+    <script>
+        function chat_page(email) {
+            console.log(email);
+           
+            $.ajax({
+                url: "/paid_chat",
+                type: "POST",
+                data: email,
+                success: function(data) {
+                    window.location.href = "/paid_chat";
+                },
+                error: function(data) {
+                    alert("Error");
+                }
+            });
+        }
+    </script>
 
 {% endblock %}

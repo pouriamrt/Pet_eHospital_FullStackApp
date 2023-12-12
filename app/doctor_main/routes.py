@@ -23,7 +23,7 @@ def index():
         user = User.query.filter_by(email=doctor_client.client_email).first()
         pet = PetProfile.query.filter_by(user_email=doctor_client.client_email).first()
         if user and pet:
-            client_info = ClientInfoVo(doctor_client.created_timestamp, user.name, pet.name, pet.pet_type, pet.age, pet.breed, pet.weight, doctor_client.status)
+            client_info = ClientInfoVo(doctor_client.created_timestamp, user.name, pet.name, pet.pet_type, pet.age, pet.breed, pet.weight, doctor_client.status, doctor_client.client_email)
             client_infos.append(client_info)
     print(client_infos)
     print(doctor_profile)
