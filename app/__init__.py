@@ -1,15 +1,19 @@
-from flask import Flask
+from flask import Flask, render_template
 from app.extensions import db
 from config import Config
 from flask_login import LoginManager
 from flask_socketio import SocketIO
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
 
 socketio = SocketIO()
 
+def internal_server_error(e):
+    print(e)
+    return render_template('error.html')
+
 def create_app(config_class=Config):
     app = Flask(__name__)
-    app.debug = True
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.config.from_object(config_class)
 
     # Initialize Flask extensions here
@@ -54,5 +58,9 @@ def create_app(config_class=Config):
     app.register_blueprint(checkout_bp)
 
     socketio.init_app(app)
-
+    
+    sentry_sdk.init("https://0c433812f6fa3b96275fb3c7ab6bb3f3@o4506383806431232.ingest.sentry.io/4506383807807488", integrations=[FlaskIntegration()])
+    
+    app.register_error_handler(Exception, internal_server_error)
+    
     return app

@@ -91,17 +91,17 @@
                         <div class="col-sm-4 col-md-3 item">
                             <h3>Services</h3>
                             <ul>
-                                <li><a href="#">Web design</a></li>
-                                <li><a href="#">Development</a></li>
-                                <li><a href="#">Hosting</a></li>
+                                <li><a href="{{ url_for('AI_suggestion.get_suggestion_page') }}">Pet Care</a></li>
+                                <li><a href="{{ url_for('AI_suggestion.get_suggestion_page') }}">Vets</a></li>
+                                <li><a href="{{ url_for('pet_profile.pet_profile') }}">Pet Profile</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4 col-md-3 item">
                             <h3>About</h3>
                             <ul>
-                                <li><a href="#">Company</a></li>
-                                <li><a href="#">Team</a></li>
-                                <li><a href="#">Legacy</a></li>
+                                <li><a href="{{ url_for('main.about') + '#section1' }}">Company</a></li>
+                                <li><a href="{{ url_for('main.about') + '#section3' }}">Team</a></li>
+                                <li><a href="{{ url_for('main.about') + '#section2' }}">Legacy</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4 col-md-3 item">

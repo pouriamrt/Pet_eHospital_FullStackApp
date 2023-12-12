@@ -15,7 +15,7 @@
                         <p class="text-muted mb-1">{{doctor_profile.department}}</p>
                         <p class="text-muted mb-4">{{doctor_profile.position}}</p>
                         <div class="d-flex justify-content-center mb-2">
-                            <button type="button" class="btn btn-primary">Profile</button>
+                            <a href="{{ url_for('user_profile.doctor_user_profile') }}"><button type="button" class="btn btn-primary">Profile</button></a>
 <!--                            <button type="button" class="btn btn-outline-primary ms-1">Message</button>-->
                         </div>
                     </div>
