@@ -10,12 +10,23 @@
               </div>
               <div class="col">
                 <h2>{{ doctor.name }}</h2>
-                <img src="/static/star.png" alt="star" style="height: 30px;">
+                <div class="star-container">
+                  <img src="/static/star.png" alt="star" class="star">
+                  <img src="/static/star.png" alt="star" class="star">
+                  <img src="/static/star.png" alt="star" class="star">
+                  <img src="/static/star.png" alt="star" class="star">
+                </div>
                 <p class="text-start">{{ doctor.department }}</p>
                 <p class="text-start"><b>Introduction: </b>{{ doctor.introduction }}.</p>
                 
                 <div class="d-flex gap-2 justify-content-center">
                     <b>Specialties: </b><span class="badge rounded-pill text-bg-secondary">{{ doctor.speciality }}</span>
+                    <br/>
+                    <div class="d-flex justify-content-center mb-2">
+                      <a href="{{ url_for('checkout.create_checkout_session') }}">
+                        <button type="button" class="btn btn-primary">Pay CA$25 To Chat With Doctor</button>
+                      </a>
+                    </div>
                 </div>
               </div>
 
@@ -52,10 +63,10 @@
                               <div class="text-muted mb-2">{{ comment.created_time }}</div>
                               <div class="rating">
                                 <!-- Assuming the score is out of 5 -->
-                                <span class="star">&#9733;</span> × {{ comment.rate }}
+                                <span class="star">{{ comment.rate }}</span>
                               </div>
                               <p>
-                                "Great experience with the veterinarians! They provided excellent care for my pet. The staff is friendly, and the facilities are clean. Highly recommended!"
+                                  {{ comment.content }}
                               </p>
                             </div>
                         </div>
@@ -63,6 +74,29 @@
                    </div>
                  {% endfor %}
                  </div>
+
+                <section id="add_comment" class="container my-4">
+                    <form action="/new_comment" method="post">
+                        <div class="mb-3 row justify-content-center">
+                            <div class="col-sm-5">
+                                <input type="text" id="content" name="content" placeholder="Your Comment" class="form-control"
+                                       style="background-color: #d8d8d9; height: 150px;">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-center">
+                            <div class="col-sm-5">
+                                <input type="text" id="rate" name="rate" placeholder="Rate the Doctor Out Of 1~5" class="form-control"
+                                       style="background-color: #d8d8d9">
+                            </div>
+                        </div>
+                        <!-- Done button -->
+                        <div class="container">
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-success rounded-pill">Leave Your Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
     </div>

@@ -1,0 +1,146 @@
+
+@charset "utf-8";
+
+/*공통*/
+html {-webkit-text-size-adjust: none; scroll-behavior: smooth;}
+html, body {direction: ltr;width: 100%;word-wrap: break-word;word-break: keep-all;}
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p,
+table, th, td, form, fieldset, legend, textarea, input, select, textarea, button, figure, figcaption {margin: 0;padding: 0;}
+
+img, form, fieldset, svg {
+    border: 0;
+    vertical-align: top;
+}
+
+.notification {
+    padding: 10px 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+  
+.is-danger {
+    background-color: #ffdddd;
+    color: #8b0000;
+    border: 1px solid #8b0000;
+}
+  
+
+input, button, select {
+   
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    margin: -1px;
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {color: #333;}
+a, a:hover, a:visited, a:active {
+    text-decoration: none;
+}
+
+.blind, legend {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+caption {
+    width:0;
+    height:0;
+    visibility:hidden;
+    line-height:0;
+    font-size:0;
+}
+
+body, textarea, input, select, textarea, button {
+    font-family: 'Pretendard','Bootstrap-icons',"나눔고딕", NanumGothic, "Nanum Gothic","돋움", Dotum, Arial, sans-serif;
+    font-weight: 400;
+    color: #222;
+    outline: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+:focus {outline: 2px solid #37b6ed;}
+a:focus {outline:none;}
+
+
+body {background: #deeff7;}
+.container {max-width:450px; margin:80px auto; background: #fff; padding:50px; border-radius: 5px;}
+/* .container::before {content: ""; display: block; width:100%; background: url(/img/bg.png)no-repeat; background-size: cover; height:700px;} */
+.content h1 {text-align: center; color:#59a4cf; font-size:24px; margin-bottom:30px;}
+.content .block01 ul {position:relative;  display: flex; justify-content: space-between;}
+.content .block01 ul li {width:calc(100%/2 - .5rem); border:1px solid #ccc;  text-align: center; border-radius: 5px;}
+.content .block01 ul li:hover,.content .block01 ul li.on {border:1px solid #37b6ed; background: #f2fbff; transition: .3s;}
+.content .block01 ul li a {display:block; position: relative; width:100%; height:100%; padding:30px; transition: all .3s;}
+.content .block01 ul li button {display:block; position: relative; width:100%; height:100%; padding:30px; transition: all .3s;}
+.content .block01 ul li.on a::after {content: "";position: absolute;bottom: -10px;right: -10px;display: inline-block;width: 35px;height: 35px;background: #37b8ee url("/static/img/check.svg")center no-repeat;border-radius: 100%; box-shadow: 0 0 10px #37b8ee; transition: all .3s;}
+.content .block01 ul li .img  { margin:0 auto; border-bottom: 1px solid #333;}
+.content .block01 ul li .img img {width:100%; height:100%; object-fit: cover;}
+.content .block01 ul li span {display:block; margin-top:30px; font-size:16px; font-weight: bold;}
+
+.content .block01 ul li .txt {display:none; width:100%; position: absolute; left:0; margin-top:20px;}
+.content .block01 ul li .txt p {color:#999; font-style: 14px;}
+
+.content .block02 {margin-top:50px;}
+.content .block02 .inform {position: relative; padding-top:10px;}
+.content .block02 .inform label {position:relative;display:block;margin-top:20px;border:1px solid #ccc;border-radius: 5px;}
+
+.content .block02 .inform label.focussed::before {content: ""; position:absolute; top:-12px; left:12px; display: inline-block; padding:5px 15px; background: #32b5e9; font-size:12px; color:#fff; border-radius: 3px;}
+.content .block02 .inform label.email.focussed:before {content: "Email";}
+.content .block02 .inform label.password.focussed:before {content: "Password";}
+.content .block02 .inform label input {width:100%; height:60px;border:0; padding:20px; color:#333; font-weight: 500; box-sizing: border-box; padding-left:50px; border-radius: 5px;}
+
+.content .block02 .inform label i {position: absolute; top:50%;left:20px; transform: translate(0,-50%); color:#ccc; margin-right: 10px;}
+.content .block02 .inform label:last-child {justify-content: space-between;}
+.content .block02 .inform label input::before {content: ""; display: block; border: 2px solid #32b5e9; width:100%; height:60px; opacity: 0;}
+.content .block02 .inform label input:focus::before {opacity: 1;}
+
+.content .block02 .inform label span {position: absolute; top:50%; right:20px; transform: translate(0,-50%); border-left:1px solid #ccc; padding-left:20px}
+.content .block02 .inform label span a {color:#37b6ed;}
+.content .block02 .inform label span button {color:#37b6ed;}
+
+
+.login_wrap {margin-top:35px; }
+.login_wrap ul {align-items: center;}
+.login_wrap ul li.join span {display:inline-block; color:#999; margin-right:5px;}
+.login_wrap ul li.join a {color:#38b5ed;}
+.login_wrap ul li.join button {color:#38b5ed;}
+.login_wrap ul li.join a:hover {text-decoration: underline;}
+.login_wrap ul li.login a {display: block; padding:12px 30px; background: #38b5ed; border-radius: 5px; color:#fff; font-weight: bold;}
+.login_wrap ul li.login button {display: block; padding:12px 30px; background: #38b5ed; border-radius: 5px; color:#fff; font-weight: bold;}
+
+.flex {display:flex;}
+.jc-sb {justify-content: space-between;}
+

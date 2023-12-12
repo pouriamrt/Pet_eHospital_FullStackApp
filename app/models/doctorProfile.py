@@ -23,5 +23,6 @@ class doctorProfile(db.Model):
             'url': self.doctor_img_url,
             'department': self.department,
             'position': self.position,
-            'rate':self.rate
+            'rate': self.rate,
+            'email': self.email
         }

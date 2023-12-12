@@ -100,7 +100,7 @@
                         <div class="card mb-3" style="min-width: 100%;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ doctor.url }}" class="img-fluid rounded-start"
+                                    <img src="{{ doctor.doctor_img_url }}" class="img-fluid rounded-start"
                                     style="width: 350px; height: 100%;" alt="Doctor Photo">
                                 </div>
                                 <div class="col-md-8">
@@ -117,7 +117,7 @@
 
                                         <p class="card-text">{{ doctor.introduction }}</p>
 
-                                        <button type="button" class="btn btn-primary">Detailed Profile</button>
+                                        <button onclick="showDetailedProfile({{ doctor.email }})" type="button" class="btn btn-primary">Detailed Profile</button>
                                     </div>
                                 </div>
                             </div>
@@ -263,23 +263,23 @@
             });
 
             function createDoctorDiv(doctor) {
-            return `
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="${doctor.url}" class="img-fluid rounded-start" alt="Doctor Photo">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">${doctor.name}</h5>
-                                    <p class="card-text">${doctor.speciality}</p>
-                                    <p class="card-text">${doctor.introduction}</p>
-                                    <button type="button" class="btn btn-primary">Detailed Profile</button>
+                return `
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="${doctor.url}" class="img-fluid rounded-start" alt="Doctor Photo">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${doctor.name}</h5>
+                                        <p class="card-text">${doctor.speciality}</p>
+                                        <p class="card-text">${doctor.introduction}</p>
+                                        <button onclick="showDetailedProfile('${doctor.email}')" type="button" class="btn btn-primary">Detailed Profile</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                `;
+                    `;
             }
 
             function fetchDoctors(department) {
@@ -289,10 +289,27 @@
                         doctorContainer.innerHTML = '';
                         doctors.forEach(doctor => {
                             doctorContainer.innerHTML += createDoctorDiv(doctor);
+                            console.log(doctor)
                         });
                     })
                     .catch(error => console.error('Error:', error));
             }
         });
+
+        function showDetailedProfile(email) {
+            console.log(email);
+           
+            $.ajax({
+                url: "/doctor_profile",
+                type: "POST",
+                data: email,
+                success: function(data) {
+                    window.location.href = "/doctor_profile";
+                },
+                error: function(data) {
+                    alert("Error while submitting Data");
+                }
+            });
+        }
     </script>
 {% endblock %}

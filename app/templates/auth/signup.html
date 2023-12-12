@@ -1,9 +1,7 @@
 {% extends "base_auth.html" %}
 
 {% block content %}
-<div class="column is-4 is-offset-4" style="background-color: transparent; height: 80%; margin-top:70px">
-    <h3 class="title">Sign Up</h3>
-    <div class="box" style="background: transparent">
+    <div>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification is-danger">
@@ -11,44 +9,90 @@
             </div>
         {% endif %}
         {% endwith %}
+
         <form method="POST" action="/signup">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="">
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="">
-                </div>
-            </div>
-
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
-                </div>
-            </div>
-            <div class="field">
-              <div class="control">
-                <label class="radio">
-                  <input type="radio" name="role" value="doctor">
-                  I'm a doctor
+            <div class="inform">
+                <label class="email">
+                    <i class="bi bi-envelope"></i>
+                    <input type="text" id="email" placeholder="Email" name="email">
                 </label>
-                <label class="radio">
-                  <input type="radio" name="role" value="client">
-                  I'm a client
+
+                <label class="name flex">
+                    <i class="bi bi-person"></i>
+                    <input type="text" placeholder="Name" name="name" id="name">
                 </label>
-              </div>
+
+                <label class="password flex">
+                    <i class="bi bi-lock"></i>
+                    <input type="password" placeholder="password" name="password" id="password">
+                </label>
+
+                <input type="hidden" id="role" name="role" value="client">
             </div>
 
-            <div class="field">
-                <a href="{{ url_for('auth.login') }}" style="color: white">Login</a>
-                <a href="{{ url_for('main.index') }}" style="float: right; color: white">Home</a>
+            <div class="login_wrap">
+                <ul class="flex jc-sb">
+                  <li class="join">
+                    <span>Have an account?</span>
+                    <a href="{{ url_for('auth.login') }}">Login</a>
+                  </li>
+                  <li class="login">
+                    <button type="submit">Sign Up</button>
+                  </li>
+                </ul>
             </div>
-
-            <button class="button is-block is-info is-large is-fullwidth" style="background: #D2B48C">Sign Up</button>
         </form>
     </div>
-</div>
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.txt.title').css('display','block');
+          $('#Doctor').on("click", function(){
+            $('.txt.title').css('display','none');
+            $('#Doctor').parent( 'li' ).addClass('on');
+            $('#user').parent( 'li' ).removeClass('on');
+            $('.txt.doctor').css('display','block');
+            $('.txt.user').css('display','none');
+
+            var role = document.getElementById('role');
+            role.value = "doctor";
+      
+        })
+      
+        $(document).ready(function(){
+          $('.txt.title').css('display','block');
+          $('#user').on("click", function(){
+            $('.txt.title').css('display','none');
+            $('#user').parent( 'li' ).addClass('on');
+            $('#Doctor').parent( 'li' ).removeClass('on');
+            $('.txt.user').css('display','block');
+            $('.txt.doctor').css('display','none');
+
+            var role = document.getElementById('role');
+            role.value = "client";
+
+        })
+        
+        })
+      
+        
+      });
+      
+         
+      
+      
+      
+      
+         $('input').on("focus", function(){
+        var input = $(this);
+        // assuming label is the parent, i.e. <label><input /></label>
+        var label = $(this).parent();
+        label.addClass('focussed');
+        input.on("blur", function(){
+          label.removeClass('focussed');
+          input.off("blur");
+        });
+      });
+         
+    </script>
 {% endblock %}

@@ -6,13 +6,11 @@ from app.models.doctorProfile import doctorProfile
 
 @bp.route('/suggestion', methods=["GET", "POST"])
 @login_required
-
 def get_suggestion_page():
     department = request.args.get('department', default=None)
     if department:
         doctors = doctorProfile.query.filter_by(department=department).all()
     else:
-
         doctors = doctorProfile.query.all()
     return render_template('suggestion.html', doctors=doctors, department=department)
 

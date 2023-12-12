@@ -1,9 +1,7 @@
 {% extends "base_auth.html" %}
 
 {% block content %}
-<div class="column is-4 is-offset-4" style="background: transparent; height: 80%; margin-top:70px">
-    <h3 class="title">Client Login</h3>
-    <div class="box" style="background: transparent">
+    <div>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="notification is-danger">
@@ -11,27 +9,41 @@
             </div>
         {% endif %}
         {% endwith %}
-        <form method="POST" action="/login">
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
-                </div>
-            </div>
 
-            <div class="field">
-                <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Your Password">
-                </div>
-            </div>
-
-            <div class="field">
-                <label class="checkbox"  style="color: darkblue">
-                    <input type="checkbox" name="remember">
-                    Remember me
+        <form id="myForm" method="POST" action="/login">
+            <div class="inform">
+                <label class="email">
+                    <i class="bi bi-envelope"></i>
+                    <input type="text" id="email" placeholder="Email" name="email">
                 </label>
+
+                <label class="password flex">
+                    <i class="bi bi-lock"></i>
+                    <input type="password" placeholder="password" name="password" id="password">
+                    <span><a href="">Forgot?</a></span>
+                </label>
+
+                <!--<label class="checkbox-custom">
+                    <input type="checkbox" name="remember">
+                    <span class="checkbox-checkmark"></span>
+                    <span>Remember me</span>
+                </label>-->
+
             </div>
 
-            <div class="flex-container">
+            <div class="login_wrap">
+                <ul class="flex jc-sb">
+                  <li class="join">
+                    <span>No account?</span>
+                    <a href="{{ url_for('auth.signup') }}">Sign up</a>
+                  </li>
+                  <li class="login">
+                    <button type="submit">Login</button>
+                  </li>
+                </ul>
+            </div>
+
+            <!--<div class="flex-container">
                 <div class="flex-item-left">
                     <a href="{{ url_for('auth.signup') }}">Sign up</a>
                 </div>
@@ -45,8 +57,58 @@
                 <a href="{{ url_for('main.index') }}" style="float: right; color: white">Home</a>
             </div>
             
-            <button class="button is-block is-info is-large is-fullwidth" style="background: #D2B48C">Login</button>
+            <button class="button is-block is-info is-large is-fullwidth" style="background: #D2B48C">Login</button>-->
         </form>
     </div>
-</div>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.txt.title').css('display','block');
+          $('#Doctor').on("click", function(){
+            $('.txt.title').css('display','none');
+            $('#Doctor').parent( 'li' ).addClass('on');
+            $('#user').parent( 'li' ).removeClass('on');
+            $('.txt.doctor').css('display','block');
+            $('.txt.user').css('display','none');
+      
+            var form = document.getElementById('myForm');
+            form.action = "/doctor_login";
+      
+        })
+      
+        $(document).ready(function(){
+          $('.txt.title').css('display','block');
+          $('#user').on("click", function(){
+            $('.txt.title').css('display','none');
+            $('#user').parent( 'li' ).addClass('on');
+            $('#Doctor').parent( 'li' ).removeClass('on');
+            $('.txt.user').css('display','block');
+            $('.txt.doctor').css('display','none');
+      
+            var form = document.getElementById('myForm');
+            form.action = "/login";
+        })
+        
+        })
+      
+        
+      });
+      
+         
+      
+      
+      
+      
+         $('input').on("focus", function(){
+        var input = $(this);
+        // assuming label is the parent, i.e. <label><input /></label>
+        var label = $(this).parent();
+        label.addClass('focussed');
+        input.on("blur", function(){
+          label.removeClass('focussed');
+          input.off("blur");
+        });
+      });
+         
+    </script>
 {% endblock %}

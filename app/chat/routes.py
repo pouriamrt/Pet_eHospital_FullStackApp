@@ -8,7 +8,7 @@ from sqlalchemy import or_, and_
 @bp.route("/chatroom")
 @login_required
 def room():
-    session["room"] = "_".join(sorted([session['email'], "pmort101@uottawa.ca"]))
+    session["room"] = "_".join(sorted([session['email'], session['doc_email']]))
     return render_template("chat.html")
 
 @bp.route("/paid_chat")
@@ -34,7 +34,7 @@ def paid_room():
 @login_required
 def get_messages():
     sender_email = session['email']
-    receiver_email = "pmort101@uottawa.ca" #request.args.get('receiver_id')
+    receiver_email = session['doc_email']
     
     messages = Chats.query.filter(
         or_(

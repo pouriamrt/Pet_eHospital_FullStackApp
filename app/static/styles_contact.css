@@ -4,6 +4,15 @@
     margin: 50px auto;
 }
 
+.star-container {
+    display: flex; /* Use flexbox to align stars in a line */
+}
+
+.star {
+    height: 30px; /* Set the height of each star */
+    margin-right: 10px; /* Add some margin between stars for spacing */
+}
+
 .container-submit {
     width: 100%;
     margin: 5px auto;
