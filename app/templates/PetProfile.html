@@ -4,7 +4,8 @@
     <!--Pet Profile Photo-->
     <div class="text-center my-4">
         <h1 class="mb-4">Pet Profile</h1>
-        {% if file_url %}
+
+        {% if file_url and pet_data['type'] %}
             <img src="{{ file_url }}" class="rounded img-fluid my-4" width="300px" height="300px" alt="Uploaded Image">
         {% endif %}
 

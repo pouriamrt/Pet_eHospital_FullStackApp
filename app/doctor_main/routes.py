@@ -12,7 +12,6 @@ from app.models.DoctorClient import DoctorClient
 
 @bp.route('/doctor_portal')
 @login_required
-@bp.errorhandler(500)
 def index():
     doctor_email = session['email']
     doctor_profile = doctorProfile.query.filter_by(email=doctor_email).first()

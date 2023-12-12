@@ -70,7 +70,6 @@ def pet_profile():
 
     # Retrieve existing metadata if available
     temp = get_blob_meta_data(blob_name)
-    print(temp)
     if temp:
         pet_data = temp
 
@@ -130,8 +129,7 @@ def pet_profile():
         pet_data.setdefault('age', user_pet_profile.age)
         pet_data.setdefault('breed', user_pet_profile.breed)
         pet_data.setdefault('weight', user_pet_profile.weight)
-
-    # ... (remaining existing code)
+        
 
     return render_template('PetProfile.html', file_url=file_url, pet_data=pet_data)
 
