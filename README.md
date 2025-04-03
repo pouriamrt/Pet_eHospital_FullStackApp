@@ -1,7 +1,5 @@
 # 🏥 Pet eHospital – Full Stack Application
 
-**Live URL**: [https://pawspital.pythonanywhere.com](https://pawspital.pythonanywhere.com)
-
 A secure, AI-powered veterinary hospital platform enabling pet owners and doctors to manage pet health profiles, communicate in real-time, and facilitate online consultations. This platform uses Flask for the backend, WebSockets for live chat, Stripe for payments, and SQLite as the local database engine.
 
 ---
